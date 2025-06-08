@@ -115,12 +115,12 @@ SQL_DWH_Project/
 * Transform and clean the data using scripts in `Scripts/Silver/`.
 * Execute the script in `Scripts/Gold/` to generate business-ready data for analytics and reporting.
   
-![Data Flow](docs/data_flow.png)
+![Data Flow](Docs/data_flow.png)
 
 4. **Explore Data**
 * Use the star schema in the Gold layer for analytical queries and reporting.
   
-![Data Model](docs/data_model.png)
+![Data Model](Docs/data_model.png)
 
 ---
 
