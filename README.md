@@ -33,19 +33,6 @@ This project involves:
 
 ---
 
-## 🛠️ Important Links & Tools:
-
-Everything is for Free!
-- **[Datasets](datasets/):** Access to the project dataset (csv files).
-- **[SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads):** Lightweight server for hosting your SQL database.
-- **[SQL Server Management Studio (SSMS)](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16):** GUI for managing and interacting with databases.
-- **[Git Repository](https://github.com/):** Set up a GitHub account and repository to manage, version, and collaborate on your code efficiently.
-- **[DrawIO](https://www.drawio.com/):** Design data architecture, models, flows, and diagrams.
-- **[Notion](https://www.notion.com/templates/sql-data-warehouse-project):** Get the Project Template from Notion
-- **[Notion Project Steps](https://thankful-pangolin-2ca.notion.site/SQL-Data-Warehouse-Project-16ed041640ef80489667cfe2f380b269?pvs=4):** Access to All Project Phases and Tasks.
-
----
-
 ## 🚀 Project Requirements
 
 ### Building the Data Warehouse (Data Engineering)
@@ -108,7 +95,83 @@ SQL_DWH_Project/
    cd SQL-Data-Warehouse
 2. **Set Up SQL Server Environment**
 * Install SQL Server Express and Azure Data Studio (if not already installed).
-  
+
+# 📊 ETL (Extract, Transform, Load) Process
+
+**ETL** is a key process in data engineering used to move data from multiple sources, transform it into a structured format, and load it into a data warehouse or data lake for analytics and reporting.
+
+---
+
+## 📌 What is ETL?
+
+ETL stands for:
+
+- **Extract** – Collect data from different sources (e.g., databases, APIs, flat files).
+- **Transform** – Clean, enrich, and convert raw data into meaningful format.
+- **Load** – Insert the transformed data into the target system (data warehouse, lake, etc.).
+
+---
+
+## 🧩 ETL Process Steps
+
+### 🔹 1. Extract
+- **Goal**: Pull raw data from source systems.
+- **Sources**: APIs, databases, CSV/JSON files, web scraping, streaming platforms.
+- **Techniques**: 
+  - Manual extract
+  - SQL queries
+  - API calls
+  - File parsing
+  - Change Data Capture (CDC)
+- **Types**:
+  - *Full Extract* – Load everything each time.
+  - *Incremental Extract* – Load only new or changed data.
+
+---
+
+### 🔸 2. Transform
+- **Goal**: Convert raw data into meaningful and usable formats.
+- **Tasks**:
+  - Data cleansing (remove duplicates, handle missing values)
+  - Data integration from multiple sources
+  - Data normalization
+  - Data aggregation
+  - Derived columns and enrichment
+
+---
+
+### 🔺 3. Load
+- **Goal**: Write the transformed data to the target destination.
+- **Types**:
+  - *Full Load* – Replace entire dataset.
+  - *Incremental Load* – Update or append only changed data.
+- **Processing**:
+  - *Batch Processing* – Periodic/scheduled loads.
+  - *Stream Processing* – Real-time data ingestion.
+
+---
+
+## 🧠 Slowly Changing Dimensions (SCD)
+
+Used to manage changes in dimension data over time:
+
+| Type | Description |
+|------|-------------|
+| **Type 0** | Data never changes (e.g., date of birth) |
+| **Type 1** | Overwrites old data (no history kept) |
+| **Type 2** | Creates new records to preserve history |
+| **Type 3** | Tracks limited history using additional columns |
+
+---
+
+## 📌 ETL Process Diagram
+
+> Visual representation of the entire ETL process:
+
+![ETL Pipeline](Docs/ETL.png)
+
+---
+
 3. **Run ETL Scripts**
 * Run `Scripts/DB_creationt.sql` to initialize the database and schemas.
 * Load ERP and CRM CSV files into Bronze layer tables using scripts in `Scripts/Bronze/`.
